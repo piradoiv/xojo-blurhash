@@ -10,17 +10,60 @@ Protected Class Base83
 		  "u", "v", "w", "x", "y", "z", "#", "$", "%", "*", "+", ",", "-", ".", _
 		  ":", ";", "=", "?", "@", "[", "]", "^", "_", "{", "|", "}", "~")
 		  
-		  Var result As Integer = 0
-		  
+		  Var value As Integer = 0
 		  Var chars() As String = Input.Split("")
-		  For Each char As String In chars
-		    result = result * 83 + alphabet.IndexOf(char)
+		  
+		  For Each c As String In chars
+		    Var digit As Integer = alphabet.indexOf(c)
+		    value = value * 83 + digit
 		  Next
 		  
-		  Return result
+		  Return value
 		End Function
 	#tag EndMethod
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

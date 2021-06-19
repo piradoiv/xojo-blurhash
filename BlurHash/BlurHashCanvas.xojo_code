@@ -3,18 +3,34 @@ Protected Class BlurHashCanvas
 Inherits Canvas
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
-		  If mHash.Length < 6 Then
-		    Paint(g, areas)
+		  If mDecodedPicture = Nil Or mHash = "" Then
+		    g.ClearRectangle(0, 0, g.Width, g.Height)
 		    Return
 		  End If
-		  
-		  Var startedAt As Double = DateTime.Now.SecondsFrom1970
-		  Var decodedPicture As Picture = BlurHash.Decoder.Decode(mHash, g.Width, g.Height)
-		  
-		  g.DrawPicture(decodedPicture, 0, 0, g.Width, g.Height)
+		  g.DrawPicture(mDecodedPicture, 0, 0, g.Width, g.Height, 0, 0, mDecodedPicture.Width, mDecodedPicture.Height)
 		  Paint(g, areas)
 		End Sub
 	#tag EndEvent
+
+
+	#tag Method, Flags = &h0
+		Sub Constructor()
+		  // Calling the overridden superclass constructor.
+		  Super.Constructor
+		  mDecoder = New BlurHash.Decoder
+		  mBackgroundWorker = New BlurHashThread
+		  mBackgroundWorker.Priority = Thread.LowestPriority
+		  AddHandler mBackgroundWorker.UserInterfaceUpdate, WeakAddressOf ThreadUpdateHandler
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub ThreadUpdateHandler(sender As BlurHashThread, updates() As Dictionary)
+		  Var update As Dictionary = updates(updates.LastIndex)
+		  mDecodedPicture = update.Value("result")
+		  Invalidate
+		End Sub
+	#tag EndMethod
 
 
 	#tag Hook, Flags = &h0
@@ -30,12 +46,34 @@ Inherits Canvas
 		#tag EndGetter
 		#tag Setter
 			Set
+			  If mHash = value Then Return
 			  mHash = value
+			  If mHash <> "" And mHash.Length >= 6 Then
+			    mBackgroundWorker.Stop
+			    Var ratio As Double = Min(50, Width) / Width
+			    mDecodedPicture = mDecoder.Decode(mHash, Width * ratio, Height * ratio)
+			    mBackgroundWorker.Hash = mHash
+			    mBackgroundWorker.Width = Width / 2
+			    mBackgroundWorker.Height = Height / 2
+			    mBackgroundWorker.Start
+			  End If
 			  Invalidate
 			End Set
 		#tag EndSetter
 		Hash As String
 	#tag EndComputedProperty
+
+	#tag Property, Flags = &h21
+		Private mBackgroundWorker As BlurHashThread
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mDecodedPicture As Picture
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mDecoder As BlurHash.Decoder
+	#tag EndProperty
 
 	#tag Property, Flags = &h21
 		Private mHash As String

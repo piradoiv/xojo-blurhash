@@ -8,7 +8,9 @@ Inherits Canvas
 		    Return
 		  End If
 		  
+		  Var startedAt As Double = DateTime.Now.SecondsFrom1970
 		  Var decodedPicture As Picture = BlurHash.Decoder.Decode(mHash, g.Width, g.Height)
+		  
 		  g.DrawPicture(decodedPicture, 0, 0, g.Width, g.Height)
 		  Paint(g, areas)
 		End Sub

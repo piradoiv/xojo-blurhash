@@ -1,26 +1,21 @@
 #tag Class
 Protected Class Base83
 	#tag Method, Flags = &h0
-		Shared Function Decode(input As String) As Integer
-		  Var alphabet() As String = Array(_
-		  "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", _
-		  "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", _
-		  "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", _
-		  "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", _
-		  "u", "v", "w", "x", "y", "z", "#", "$", "%", "*", "+", ",", "-", ".", _
-		  ":", ";", "=", "?", "@", "[", "]", "^", "_", "{", "|", "}", "~")
-		  
+		Function Decode(input As String) As Integer
+		  #Pragma BackgroundTasks False
 		  Var value As Integer = 0
-		  Var chars() As String = Input.Split("")
-		  
-		  For Each c As String In chars
-		    Var digit As Integer = alphabet.indexOf(c)
-		    value = value * 83 + digit
+		  For Each c As String In Input.Characters
+		    value = value * 83 + kAlphabet.indexOf(c)
 		  Next
+		  #Pragma BackgroundTasks True
 		  
 		  Return value
 		End Function
 	#tag EndMethod
+
+
+	#tag Constant, Name = kAlphabet, Type = String, Dynamic = False, Default = \"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+\x2C-.:;\x3D\?@[]^_{|}~", Scope = Public
+	#tag EndConstant
 
 
 	#tag ViewBehavior

@@ -10,7 +10,7 @@ Begin Window ExampleWindow
    HasFullScreenButton=   True
    HasMaximizeButton=   True
    HasMinimizeButton=   True
-   Height          =   400
+   Height          =   600
    ImplicitInstance=   True
    MacProcID       =   0
    MaximumHeight   =   32000
@@ -23,7 +23,7 @@ Begin Window ExampleWindow
    Title           =   "BlurHash Example"
    Type            =   0
    Visible         =   True
-   Width           =   600
+   Width           =   832
    Begin BlurHash.BlurHashCanvas ResultCanvas
       AllowAutoDeactivate=   True
       AllowFocus      =   False
@@ -32,14 +32,14 @@ Begin Window ExampleWindow
       Backdrop        =   0
       Enabled         =   True
       Hash            =   ""
-      Height          =   200
+      Height          =   546
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   151
-      LockBottom      =   False
+      LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   False
+      LockRight       =   True
       LockTop         =   True
       Scope           =   1
       TabIndex        =   0
@@ -49,7 +49,7 @@ Begin Window ExampleWindow
       Top             =   0
       Transparent     =   True
       Visible         =   True
-      Width           =   363
+      Width           =   681
    End
    Begin Label ExamplesLabel
       AllowAutoDeactivate=   True
@@ -112,7 +112,7 @@ Begin Window ExampleWindow
       HasHorizontalScrollbar=   False
       HasVerticalScrollbar=   True
       HeadingIndex    =   -1
-      Height          =   336
+      Height          =   536
       Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   ""
@@ -137,55 +137,6 @@ Begin Window ExampleWindow
       Width           =   119
       _ScrollWidth    =   -1
    End
-   Begin TextArea TextArea1
-      AllowAutoDeactivate=   True
-      AllowFocusRing  =   True
-      AllowSpellChecking=   True
-      AllowStyledText =   False
-      AllowTabs       =   False
-      BackgroundColor =   &cFFFFFF00
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      FontName        =   "System"
-      FontSize        =   0.0
-      FontUnit        =   0
-      Format          =   ""
-      HasBorder       =   True
-      HasHorizontalScrollbar=   False
-      HasVerticalScrollbar=   True
-      Height          =   108
-      HideSelection   =   True
-      Index           =   -2147483648
-      Italic          =   False
-      Left            =   151
-      LineHeight      =   0.0
-      LineSpacing     =   1.0
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      MaximumCharactersAllowed=   0
-      Multiline       =   True
-      ReadOnly        =   False
-      Scope           =   0
-      TabIndex        =   3
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextAlignment   =   0
-      TextColor       =   &c00000000
-      Tooltip         =   ""
-      Top             =   212
-      Transparent     =   False
-      Underline       =   False
-      UnicodeMode     =   1
-      ValidationMask  =   ""
-      Visible         =   True
-      Width           =   298
-   End
    Begin PushButton PushButton1
       AllowAutoDeactivate=   True
       Bold            =   False
@@ -200,23 +151,66 @@ Begin Window ExampleWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   369
-      LockBottom      =   False
+      Left            =   732
+      LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   False
       MacButtonStyle  =   0
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
       TabStop         =   True
       Tooltip         =   ""
-      Top             =   332
+      Top             =   560
       Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
+   End
+   Begin TextField TextField1
+      AllowAutoDeactivate=   True
+      AllowFocusRing  =   True
+      AllowSpellChecking=   False
+      AllowTabs       =   False
+      BackgroundColor =   &cFFFFFF00
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Format          =   ""
+      HasBorder       =   True
+      Height          =   22
+      Hint            =   ""
+      Index           =   -2147483648
+      Italic          =   False
+      Left            =   499
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   False
+      MaximumCharactersAllowed=   0
+      Password        =   False
+      ReadOnly        =   False
+      Scope           =   0
+      TabIndex        =   5
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   ""
+      TextAlignment   =   0
+      TextColor       =   &c00000000
+      Tooltip         =   ""
+      Top             =   558
+      Transparent     =   False
+      Underline       =   False
+      ValidationMask  =   ""
+      Visible         =   True
+      Width           =   221
    End
 End
 #tag EndWindow
@@ -249,7 +243,7 @@ End
 #tag Events PushButton1
 	#tag Event
 		Sub Action()
-		  ResultCanvas.Hash = TextArea1.Text
+		  ResultCanvas.Hash = TextField1.Text
 		End Sub
 	#tag EndEvent
 #tag EndEvents

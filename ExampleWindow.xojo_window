@@ -30,6 +30,7 @@ Begin Window ExampleWindow
       AllowFocusRing  =   True
       AllowTabs       =   False
       Backdrop        =   0
+      DoubleBuffer    =   False
       Enabled         =   True
       Hash            =   ""
       Height          =   546
@@ -135,6 +136,7 @@ Begin Window ExampleWindow
       Underline       =   False
       Visible         =   True
       Width           =   119
+      _ScrollOffset   =   0
       _ScrollWidth    =   -1
    End
    Begin PushButton PushButton1

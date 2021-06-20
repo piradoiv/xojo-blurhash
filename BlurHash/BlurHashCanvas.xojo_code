@@ -23,18 +23,12 @@ Inherits Canvas
 		Sub Constructor()
 		  // Calling the overridden superclass constructor.
 		  Super.Constructor
+		  
 		  mPreviousSize = 0 : 0
 		  mDecoder = New BlurHash.Decoder
 		  mBackgroundWorker = New BlurHashThread
 		  mBackgroundWorker.Priority = Thread.LowestPriority
 		  AddHandler mBackgroundWorker.UserInterfaceUpdate, WeakAddressOf ThreadUpdateHandler
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub Invalidate(eraseBackground As Boolean = True)
-		  // Calling the overridden superclass method.
-		  Super.Invalidate(eraseBackground)
 		End Sub
 	#tag EndMethod
 

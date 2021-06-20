@@ -7,6 +7,12 @@ Inherits Canvas
 		    g.ClearRectangle(0, 0, g.Width, g.Height)
 		    Return
 		  End If
+		  
+		  If mPreviousSize.Left <> g.Width Or mPreviousSize.Right <> g.Height Then
+		    mPreviousSize = g.Width : g.Height
+		    ResetBackgroundWorker
+		  End If
+		  
 		  g.DrawPicture(mDecodedPicture, 0, 0, g.Width, g.Height, 0, 0, mDecodedPicture.Width, mDecodedPicture.Height)
 		  Paint(g, areas)
 		End Sub
@@ -17,10 +23,32 @@ Inherits Canvas
 		Sub Constructor()
 		  // Calling the overridden superclass constructor.
 		  Super.Constructor
+		  mPreviousSize = 0 : 0
 		  mDecoder = New BlurHash.Decoder
 		  mBackgroundWorker = New BlurHashThread
 		  mBackgroundWorker.Priority = Thread.LowestPriority
 		  AddHandler mBackgroundWorker.UserInterfaceUpdate, WeakAddressOf ThreadUpdateHandler
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub Invalidate(eraseBackground As Boolean = True)
+		  // Calling the overridden superclass method.
+		  Super.Invalidate(eraseBackground)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub ResetBackgroundWorker()
+		  mBackgroundWorker.Stop
+		  If mHash <> "" And mHash.Length >= 6 Then
+		    Var ratio As Double = Min(50, Width) / Width
+		    mDecodedPicture = mDecoder.Decode(mHash, Width * ratio, Height * ratio)
+		    mBackgroundWorker.Hash = mHash
+		    mBackgroundWorker.Width = Width / 2
+		    mBackgroundWorker.Height = Height / 2
+		    mBackgroundWorker.Start
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -48,15 +76,7 @@ Inherits Canvas
 			Set
 			  If mHash = value Then Return
 			  mHash = value
-			  If mHash <> "" And mHash.Length >= 6 Then
-			    mBackgroundWorker.Stop
-			    Var ratio As Double = Min(50, Width) / Width
-			    mDecodedPicture = mDecoder.Decode(mHash, Width * ratio, Height * ratio)
-			    mBackgroundWorker.Hash = mHash
-			    mBackgroundWorker.Width = Width / 2
-			    mBackgroundWorker.Height = Height / 2
-			    mBackgroundWorker.Start
-			  End If
+			  ResetBackgroundWorker
 			  Invalidate
 			End Set
 		#tag EndSetter
@@ -77,6 +97,10 @@ Inherits Canvas
 
 	#tag Property, Flags = &h21
 		Private mHash As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mPreviousSize As Pair
 	#tag EndProperty
 
 

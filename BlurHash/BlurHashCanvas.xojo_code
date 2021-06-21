@@ -34,13 +34,14 @@ Inherits Canvas
 
 	#tag Method, Flags = &h21
 		Private Sub ResetBackgroundWorker()
+		  Const kDecreaseQuality = 10
 		  mBackgroundWorker.Stop
 		  If mHash <> "" And mHash.Length >= 6 Then
-		    Var ratio As Double = Min(50, Width) / Width
+		    Var ratio As Double = Min(30, Width) / Width
 		    mDecodedPicture = mDecoder.Decode(mHash, Width * ratio, Height * ratio)
 		    mBackgroundWorker.Hash = mHash
-		    mBackgroundWorker.Width = Width / 2
-		    mBackgroundWorker.Height = Height / 2
+		    mBackgroundWorker.Width = Width / kDecreaseQuality
+		    mBackgroundWorker.Height = Height / kDecreaseQuality
 		    mBackgroundWorker.Start
 		  End If
 		End Sub

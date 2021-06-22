@@ -304,6 +304,8 @@ End
 		    Me.AddRow("Example #" + index.ToString)
 		    Me.RowTagAt(i) = examples(i)
 		  Next
+		  
+		  Me.SelectedRowIndex = 0
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -224,11 +224,11 @@ Begin Window ExampleWindow
       InitialParent   =   ""
       Left            =   225
       LineStep        =   1
-      LockBottom      =   False
+      LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
-      LockTop         =   True
+      LockTop         =   False
       MaximumValue    =   300
       MinimumValue    =   0
       PageStep        =   20
@@ -258,11 +258,11 @@ Begin Window ExampleWindow
       InitialParent   =   ""
       Italic          =   False
       Left            =   151
-      LockBottom      =   False
+      LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
-      LockTop         =   True
+      LockTop         =   False
       Multiline       =   False
       Scope           =   0
       Selectable      =   False

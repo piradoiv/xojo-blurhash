@@ -1,7 +1,7 @@
 #tag Module
 Protected Module BlurHash
 	#tag Method, Flags = &h0
-		Function Substring(extends s As String, indexStart As Integer, indexEnd As Integer) As String
+		Function JSLikeSubstring(extends s As String, indexStart As Integer, indexEnd As Integer) As String
 		  s = s.Left(indexEnd)
 		  Return s.Right(s.Length - indexStart)
 		End Function

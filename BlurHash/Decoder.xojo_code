@@ -17,8 +17,6 @@ Protected Class Decoder
 		  Var r, g, b, index As Double
 		  Var basis As Double
 		  
-		  Var start As Double = DateTime.Now.SecondsFrom1970
-		  Var count As Integer = 0
 		  For y As Integer = 0 To height - 1
 		    For x As Integer = 0 To width - 1
 		      r = 0
@@ -34,16 +32,12 @@ Protected Class Decoder
 		          r = r + colors(index, 0) * basis
 		          g = g + colors(index, 1) * basis
 		          b = b + colors(index, 2) * basis
-		          count = count + 1
 		        Next
 		      Next
 		      
 		      pixels.Pixel(x, y) = Color.RGB(LinearTosRGB(r), LinearTosRGB(g), LinearTosRGB(b))
 		    Next
 		  Next
-		  Var elapsed As Double = DateTime.Now.SecondsFrom1970 - start
-		  System.DebugLog("Elapsed: " + elapsed.ToString)
-		  System.DebugLog("Counter: " + count.ToString)
 		  
 		  Return result
 		End Function
@@ -102,7 +96,7 @@ Protected Class Decoder
 		  Var portion As String
 		  
 		  ' DC component
-		  portion = hash.Substring(2, 6)
+		  portion = hash.JSLikeSubstring(2, 6)
 		  value = DecodeBase83(portion)
 		  decoded = DecodeDC(value)
 		  colors(0, 0) = decoded(0)
@@ -111,7 +105,7 @@ Protected Class Decoder
 		  
 		  ' AC Components
 		  For component As Integer = 1 To colors.LastIndex
-		    portion = hash.Substring(4 + component * 2, 6 + component * 2)
+		    portion = hash.JSLikeSubstring(4 + component * 2, 6 + component * 2)
 		    value = DecodeBase83(portion)
 		    decoded = DecodeAC(value, maximumValue)
 		    colors(component, 0) = decoded(0)

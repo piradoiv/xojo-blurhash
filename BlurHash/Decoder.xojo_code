@@ -1,7 +1,7 @@
 #tag Class
 Protected Class Decoder
 	#tag Method, Flags = &h0
-		Function Decode(hash As String, width As Integer, height As Integer) As Picture
+		Function Decode(hash As String, width As Integer, height As Integer, punch As Double = 1.0) As Picture
 		  Var result As New Picture(width, height)
 		  Var chars() As String = hash.Split("")
 		  
@@ -10,7 +10,7 @@ Protected Class Decoder
 		  Var sizeY As Integer = Round(sizeFlag / 9) + 1
 		  
 		  Var quantisedMaximumValue As Integer = DecodeBase83(chars(1))
-		  Var maximumValue As Double = (quantisedMaximumValue + 1) / 166
+		  Var maximumValue As Double = (quantisedMaximumValue + 1) / 166 * punch
 		  Var colors(-1,-1) As Double = PrepareColors(sizeX, sizeY, maximumValue, hash)
 		  
 		  Var pixels As RGBSurface = result.RGBSurface
@@ -59,7 +59,7 @@ Protected Class Decoder
 		  Var g As Double = SignPow((quantG - 9) / 9, 2.0) * maximumValue
 		  Var b As Double = SignPow((quantB - 9) / 9, 2.0) * maximumValue
 		  
-		  Return Array(Abs(r), Abs(g), Abs(b))
+		  Return Array(r, g, b)
 		End Function
 	#tag EndMethod
 
@@ -67,7 +67,7 @@ Protected Class Decoder
 		Private Function DecodeBase83(input As String) As Integer
 		  Var value As Integer = 0
 		  For Each c As String In Input.Characters
-		    value = value * 83 + kAlphabet.indexOf(c)
+		    value = value * 83 + kAlphabet.indexOf(c, ComparisonOptions.CaseSensitive)
 		  Next
 		  
 		  Return value
@@ -99,9 +99,11 @@ Protected Class Decoder
 		  colors.ResizeTo(numX * numY, 2)
 		  Var value As Integer
 		  Var decoded() As Double
+		  Var portion As String
 		  
 		  ' DC component
-		  value = DecodeBase83(hash.Substring(2, 6))
+		  portion = hash.Substring(2, 6)
+		  value = DecodeBase83(portion)
 		  decoded = DecodeDC(value)
 		  colors(0, 0) = decoded(0)
 		  colors(0, 1) = decoded(1)
@@ -109,7 +111,8 @@ Protected Class Decoder
 		  
 		  ' AC Components
 		  For component As Integer = 1 To colors.LastIndex
-		    value = DecodeBase83(hash.Substring(4 + component * 2, 6 + component * 2))
+		    portion = hash.Substring(4 + component * 2, 6 + component * 2)
+		    value = DecodeBase83(portion)
 		    decoded = DecodeAC(value, maximumValue)
 		    colors(component, 0) = decoded(0)
 		    colors(component, 1) = decoded(1)

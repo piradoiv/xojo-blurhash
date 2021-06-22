@@ -115,7 +115,7 @@ Begin Window ExampleWindow
       HasHorizontalScrollbar=   False
       HasVerticalScrollbar=   True
       HeadingIndex    =   -1
-      Height          =   536
+      Height          =   390
       Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   ""
@@ -141,94 +141,19 @@ Begin Window ExampleWindow
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
    End
-   Begin PushButton PushButton1
-      AllowAutoDeactivate=   True
-      Bold            =   False
-      Cancel          =   False
-      Caption         =   "Button"
-      Default         =   False
-      Enabled         =   True
-      FontName        =   "System"
-      FontSize        =   0.0
-      FontUnit        =   0
-      Height          =   20
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   732
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
-      LockTop         =   False
-      MacButtonStyle  =   0
-      Scope           =   0
-      TabIndex        =   4
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Tooltip         =   ""
-      Top             =   560
-      Transparent     =   False
-      Underline       =   False
-      Visible         =   True
-      Width           =   80
-   End
-   Begin TextField TextField1
-      AllowAutoDeactivate=   True
-      AllowFocusRing  =   True
-      AllowSpellChecking=   False
-      AllowTabs       =   False
-      BackgroundColor =   &cFFFFFF00
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      FontName        =   "System"
-      FontSize        =   0.0
-      FontUnit        =   0
-      Format          =   ""
-      HasBorder       =   True
-      Height          =   22
-      Hint            =   ""
-      Index           =   -2147483648
-      Italic          =   False
-      Left            =   580
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   True
-      LockTop         =   False
-      MaximumCharactersAllowed=   0
-      Password        =   False
-      ReadOnly        =   False
-      Scope           =   0
-      TabIndex        =   5
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextAlignment   =   0
-      TextColor       =   &c00000000
-      Tooltip         =   ""
-      Top             =   558
-      Transparent     =   False
-      Underline       =   False
-      ValidationMask  =   ""
-      Visible         =   True
-      Width           =   140
-   End
-   Begin Slider Slider1
+   Begin Slider PunchSlider
       AllowAutoDeactivate=   True
       AllowLiveScrolling=   True
       Enabled         =   True
       Height          =   23
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   225
+      Left            =   542
       LineStep        =   1
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
+      LockLeft        =   False
+      LockRight       =   True
       LockTop         =   False
       MaximumValue    =   300
       MinimumValue    =   0
@@ -243,9 +168,9 @@ Begin Window ExampleWindow
       Transparent     =   False
       Value           =   100
       Visible         =   True
-      Width           =   149
+      Width           =   92
    End
-   Begin Label Label1
+   Begin Label PunchLabel
       AllowAutoDeactivate=   True
       Bold            =   False
       DataField       =   ""
@@ -258,11 +183,11 @@ Begin Window ExampleWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   151
+      Left            =   468
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
+      LockLeft        =   False
+      LockRight       =   True
       LockTop         =   False
       Multiline       =   False
       Scope           =   0
@@ -271,7 +196,7 @@ Begin Window ExampleWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "Punch:"
-      TextAlignment   =   0
+      TextAlignment   =   3
       TextColor       =   &c00000000
       Tooltip         =   ""
       Top             =   560
@@ -280,7 +205,7 @@ Begin Window ExampleWindow
       Visible         =   True
       Width           =   62
    End
-   Begin CheckBox CheckBox1
+   Begin CheckBox LowQualityPreviewCheckBox
       AllowAutoDeactivate=   True
       Bold            =   False
       Caption         =   "Low Quality Preview"
@@ -294,11 +219,11 @@ Begin Window ExampleWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   386
+      Left            =   663
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
+      LockLeft        =   False
+      LockRight       =   True
       LockTop         =   False
       Scope           =   0
       TabIndex        =   8
@@ -311,7 +236,88 @@ Begin Window ExampleWindow
       Value           =   True
       Visible         =   True
       VisualState     =   1
-      Width           =   182
+      Width           =   149
+   End
+   Begin TextArea BlurHashTextArea
+      AllowAutoDeactivate=   True
+      AllowFocusRing  =   True
+      AllowSpellChecking=   True
+      AllowStyledText =   True
+      AllowTabs       =   False
+      BackgroundColor =   &cFFFFFF00
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Format          =   ""
+      HasBorder       =   True
+      HasHorizontalScrollbar=   False
+      HasVerticalScrollbar=   True
+      Height          =   100
+      HideSelection   =   True
+      Index           =   -2147483648
+      Italic          =   False
+      Left            =   20
+      LineHeight      =   0.0
+      LineSpacing     =   1.0
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   False
+      MaximumCharactersAllowed=   0
+      Multiline       =   True
+      ReadOnly        =   False
+      Scope           =   0
+      TabIndex        =   9
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   ""
+      TextAlignment   =   0
+      TextColor       =   &c00000000
+      Tooltip         =   ""
+      Top             =   446
+      Transparent     =   False
+      Underline       =   False
+      UnicodeMode     =   1
+      ValidationMask  =   ""
+      Visible         =   True
+      Width           =   119
+   End
+   Begin PushButton RandomizePushButton
+      AllowAutoDeactivate=   True
+      Bold            =   False
+      Cancel          =   False
+      Caption         =   "Randomize"
+      Default         =   False
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Height          =   20
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   20
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   False
+      MacButtonStyle  =   0
+      Scope           =   0
+      TabIndex        =   10
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   560
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   119
    End
 End
 #tag EndWindow
@@ -322,7 +328,7 @@ End
 #tag Events BlurHashListbox
 	#tag Event
 		Sub Change()
-		  ResultCanvas.Hash = If(Me.SelectedRowIndex = -1, "", Me.RowTagAt(Me.SelectedRowIndex))
+		  BlurHashTextArea.Text = If(Me.SelectedRowIndex = -1, "", Me.RowTagAt(Me.SelectedRowIndex))
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -343,24 +349,38 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events PushButton1
-	#tag Event
-		Sub Action()
-		  ResultCanvas.Hash = TextField1.Text
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events Slider1
+#tag Events PunchSlider
 	#tag Event
 		Sub ValueChanged()
 		  ResultCanvas.Punch = Me.Value / 100
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events CheckBox1
+#tag Events LowQualityPreviewCheckBox
 	#tag Event
 		Sub Action()
 		  ResultCanvas.ShowLowQualityPreview = Me.Value
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events BlurHashTextArea
+	#tag Event
+		Sub TextChange()
+		  ResultCanvas.Hash = Me.Text
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events RandomizePushButton
+	#tag Event
+		Sub Action()
+		  Var alphabet() As String = BlurHash.Decoder.kAlphabet.Split("")
+		  Var charAmount As Integer = System.Random.InRange(20, 30)
+		  Var hash As String = alphabet(System.Random.InRange(0, alphabet.IndexOf("S")))
+		  For i As Integer = 0 To charAmount
+		    hash = hash + alphabet(System.Random.InRange(0, alphabet.LastIndex))
+		  Next
+		  
+		  BlurHashTextArea.Text = hash
 		End Sub
 	#tag EndEvent
 #tag EndEvents

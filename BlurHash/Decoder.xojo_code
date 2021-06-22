@@ -135,7 +135,7 @@ Protected Class Decoder
 	#tag EndMethod
 
 
-	#tag Constant, Name = kAlphabet, Type = String, Dynamic = False, Default = \"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+\x2C-.:;\x3D\?@[]^_{|}~", Scope = Private
+	#tag Constant, Name = kAlphabet, Type = String, Dynamic = False, Default = \"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+\x2C-.:;\x3D\?@[]^_{|}~", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = PI, Type = Double, Dynamic = False, Default = \"3.14159265358979323846", Scope = Private

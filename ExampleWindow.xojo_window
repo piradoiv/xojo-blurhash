@@ -42,6 +42,7 @@ Begin Window ExampleWindow
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
+      Punch           =   1.0
       Scope           =   1
       TabIndex        =   0
       TabPanelIndex   =   0
@@ -214,6 +215,70 @@ Begin Window ExampleWindow
       Visible         =   True
       Width           =   221
    End
+   Begin Slider Slider1
+      AllowAutoDeactivate=   True
+      AllowLiveScrolling=   True
+      Enabled         =   True
+      Height          =   23
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   225
+      LineStep        =   1
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      MaximumValue    =   300
+      MinimumValue    =   0
+      PageStep        =   20
+      Scope           =   0
+      TabIndex        =   6
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TickMarkStyle   =   0
+      Tooltip         =   ""
+      Top             =   564
+      Transparent     =   False
+      Value           =   100
+      Visible         =   True
+      Width           =   149
+   End
+   Begin Label Label1
+      AllowAutoDeactivate=   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Height          =   20
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   151
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   7
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "Punch:"
+      TextAlignment   =   0
+      TextColor       =   &c00000000
+      Tooltip         =   ""
+      Top             =   560
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   62
+   End
 End
 #tag EndWindow
 
@@ -246,6 +311,13 @@ End
 	#tag Event
 		Sub Action()
 		  ResultCanvas.Hash = TextField1.Text
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events Slider1
+	#tag Event
+		Sub ValueChanged()
+		  ResultCanvas.Punch = Me.Value / 100
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -5,7 +5,7 @@ Inherits Thread
 		Sub Run()
 		  Var update As New Dictionary
 		  Var mDecoder As New BlurHash.Decoder
-		  update.Value("result") = mDecoder.Decode(Hash, Width, Height)
+		  update.Value("result") = mDecoder.Decode(Hash, Width, Height, Punch)
 		  AddUserInterfaceUpdate(update)
 		End Sub
 	#tag EndEvent
@@ -17,6 +17,10 @@ Inherits Thread
 
 	#tag Property, Flags = &h0
 		Height As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		Punch As Double = 1.0
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -134,6 +138,14 @@ Inherits Thread
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Punch"
+			Visible=false
+			Group="Behavior"
+			InitialValue="1.0"
+			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

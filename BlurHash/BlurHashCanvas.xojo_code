@@ -38,12 +38,14 @@ Inherits Canvas
 		  mBackgroundWorker.Stop
 		  If mHash <> "" And mHash.Length >= 6 Then
 		    Var ratio As Double = Min(30, Width) / Width
-		    mDecodedPicture = mDecoder.Decode(mHash, Width * ratio, Height * ratio)
+		    mDecodedPicture = mDecoder.Decode(mHash, Width * ratio, Height * ratio, Punch)
 		    mBackgroundWorker.Hash = mHash
 		    mBackgroundWorker.Width = Width / kDecreaseQuality
 		    mBackgroundWorker.Height = Height / kDecreaseQuality
+		    mBackgroundWorker.Punch = Punch
 		    mBackgroundWorker.Start
 		  End If
+		  Invalidate
 		End Sub
 	#tag EndMethod
 
@@ -72,7 +74,6 @@ Inherits Canvas
 			  If mHash = value Then Return
 			  mHash = value
 			  ResetBackgroundWorker
-			  Invalidate
 			End Set
 		#tag EndSetter
 		Hash As String
@@ -97,6 +98,25 @@ Inherits Canvas
 	#tag Property, Flags = &h21
 		Private mPreviousSize As Pair
 	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mPunch As Double = 1.0
+	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mPunch
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mPunch = value
+			  ResetBackgroundWorker
+			End Set
+		#tag EndSetter
+		Punch As Double
+	#tag EndComputedProperty
 
 
 	#tag ViewBehavior
@@ -306,6 +326,14 @@ Inherits Canvas
 			Group=""
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Punch"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

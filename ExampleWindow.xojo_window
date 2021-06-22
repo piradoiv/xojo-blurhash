@@ -44,6 +44,7 @@ Begin Window ExampleWindow
       LockTop         =   True
       Punch           =   1.0
       Scope           =   1
+      ShowLowQualityPreview=   True
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
@@ -191,10 +192,10 @@ Begin Window ExampleWindow
       Hint            =   ""
       Index           =   -2147483648
       Italic          =   False
-      Left            =   499
+      Left            =   580
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   True
       LockTop         =   False
       MaximumCharactersAllowed=   0
@@ -213,7 +214,7 @@ Begin Window ExampleWindow
       Underline       =   False
       ValidationMask  =   ""
       Visible         =   True
-      Width           =   221
+      Width           =   140
    End
    Begin Slider Slider1
       AllowAutoDeactivate=   True
@@ -279,6 +280,39 @@ Begin Window ExampleWindow
       Visible         =   True
       Width           =   62
    End
+   Begin CheckBox CheckBox1
+      AllowAutoDeactivate=   True
+      Bold            =   False
+      Caption         =   "Low Quality Preview"
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Height          =   20
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   386
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   False
+      Scope           =   0
+      TabIndex        =   8
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   560
+      Transparent     =   False
+      Underline       =   False
+      Value           =   True
+      Visible         =   True
+      VisualState     =   1
+      Width           =   182
+   End
 End
 #tag EndWindow
 
@@ -320,6 +354,13 @@ End
 	#tag Event
 		Sub ValueChanged()
 		  ResultCanvas.Punch = Me.Value / 100
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events CheckBox1
+	#tag Event
+		Sub Action()
+		  ResultCanvas.ShowLowQualityPreview = Me.Value
 		End Sub
 	#tag EndEvent
 #tag EndEvents

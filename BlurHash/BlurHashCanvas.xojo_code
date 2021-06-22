@@ -38,7 +38,7 @@ Inherits Canvas
 		  mBackgroundWorker.Stop
 		  If mHash <> "" And mHash.Length >= 6 Then
 		    Var ratio As Double = Min(30, Width) / Width
-		    mDecodedPicture = mDecoder.Decode(mHash, Width * ratio, Height * ratio, Punch)
+		    If ShowLowQualityPreview Then mDecodedPicture = mDecoder.Decode(mHash, Width * ratio, Height * ratio, Punch)
 		    mBackgroundWorker.Hash = mHash
 		    mBackgroundWorker.Width = Width / kDecreaseQuality
 		    mBackgroundWorker.Height = Height / kDecreaseQuality
@@ -117,6 +117,10 @@ Inherits Canvas
 		#tag EndSetter
 		Punch As Double
 	#tag EndComputedProperty
+
+	#tag Property, Flags = &h0
+		ShowLowQualityPreview As Boolean = True
+	#tag EndProperty
 
 
 	#tag ViewBehavior
@@ -305,6 +309,22 @@ Inherits Canvas
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Punch"
+			Visible=true
+			Group="Behavior"
+			InitialValue="1.0"
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ShowLowQualityPreview"
+			Visible=true
+			Group="Behavior"
+			InitialValue="True"
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="TabPanelIndex"
 			Visible=false
 			Group="Position"
@@ -326,14 +346,6 @@ Inherits Canvas
 			Group=""
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Punch"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

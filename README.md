@@ -3,4 +3,6 @@ This is a **work in progress** [BlurHash](https://blurha.sh) implementation for 
 
 The module contains a custom Canvas that displays the rendered image based on the hash, automatically. As it is CPU intensive, it will draw a quick low-quality version, while the final one finishes in a thread.
 
-At the moment it only contains the decoder. I'm interested in create an encoder later.
+This module contains a custom Canvas component capable of rendering encoded hashes. There is also a Thread for generating the final pictures in background, and the raw Decoder.
+
+At the moment just the hash decoder is available, I'm interested in creating an encoder later, so you will be able to easily convert pictures into hashes.

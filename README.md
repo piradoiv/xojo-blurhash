@@ -7,4 +7,4 @@ The module contains a custom Canvas that displays the rendered image based on th
 
 This module contains a custom Canvas component capable of rendering encoded hashes. There is also a Thread for generating the final pictures in background, and the raw Decoder.
 
-At the moment just the hash decoder is available, I'm interested in creating an encoder later, so you will be able to easily convert pictures into hashes.
+At the moment just the hash decoder is available, there is an initial version of the encoder already included, so you will be able to easily convert pictures into hashes. Still needs to be properly tested.

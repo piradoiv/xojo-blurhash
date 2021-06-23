@@ -1,7 +1,7 @@
 #tag Class
 Protected Class Base83
 	#tag Method, Flags = &h0
-		Function Decode(input As String) As Integer
+		Shared Function Decode(input As String) As Integer
 		  Var value As Integer = 0
 		  For Each c As String In Input.Characters
 		    value = value * 83 + kAlphabet.indexOf(c, ComparisonOptions.CaseSensitive)
@@ -12,13 +12,13 @@ Protected Class Base83
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Encode(value As Integer, length As Integer) As String
+		Shared Function Encode(value As Integer, length As Integer) As String
 		  Var chars() As String = kAlphabet.Split("")
 		  Var result As String
 		  Var digit As Integer
 		  
 		  For i As Integer = 1 To length
-		    digit = (Floor(value) / Pow(83, length - 1)) Mod 83
+		    digit = (Floor(value) / Pow(83, length - i)) Mod 83
 		    result = result + chars(digit)
 		  Next
 		  

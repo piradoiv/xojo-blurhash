@@ -1,60 +1,82 @@
 #tag Window
-Begin Window ExampleWindow
+Begin Window EncoderWindow
    Backdrop        =   0
    BackgroundColor =   &cFFFFFF00
    Composite       =   False
-   DefaultLocation =   2
+   DefaultLocation =   0
    FullScreen      =   False
    HasBackgroundColor=   False
    HasCloseButton  =   True
-   HasFullScreenButton=   True
+   HasFullScreenButton=   False
    HasMaximizeButton=   True
    HasMinimizeButton=   True
-   Height          =   600
+   Height          =   476
    ImplicitInstance=   True
    MacProcID       =   0
    MaximumHeight   =   32000
    MaximumWidth    =   32000
-   MenuBar         =   2051674111
+   MenuBar         =   0
    MenuBarVisible  =   True
    MinimumHeight   =   64
    MinimumWidth    =   64
    Resizeable      =   True
-   Title           =   "BlurHash Example"
-   Type            =   0
+   Title           =   "Encode"
+   Type            =   8
    Visible         =   True
-   Width           =   832
-   Begin BlurHash.BlurHashCanvas ResultCanvas
+   Width           =   600
+   Begin ImageWell InputImageWell
       AllowAutoDeactivate=   True
-      AllowFocus      =   False
-      AllowFocusRing  =   True
-      AllowTabs       =   False
-      Backdrop        =   0
-      DoubleBuffer    =   False
       Enabled         =   True
-      Hash            =   ""
-      Height          =   546
+      Height          =   150
+      Image           =   0
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   151
-      LockBottom      =   True
+      Left            =   113
+      LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   True
+      LockRight       =   False
       LockTop         =   True
-      Punch           =   1.0
-      Scope           =   1
-      ShowLowQualityPreview=   True
+      Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
       Tooltip         =   ""
-      Top             =   0
-      Transparent     =   True
+      Top             =   49
+      Transparent     =   False
       Visible         =   True
-      Width           =   681
+      Width           =   150
    End
-   Begin Label ExamplesLabel
+   Begin Slider XComponentsSlider
+      AllowAutoDeactivate=   True
+      AllowLiveScrolling=   False
+      Enabled         =   False
+      Height          =   23
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   387
+      LineStep        =   1
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      MaximumValue    =   9
+      MinimumValue    =   1
+      PageStep        =   20
+      Scope           =   0
+      TabIndex        =   1
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TickMarkStyle   =   0
+      Tooltip         =   ""
+      Top             =   101
+      Transparent     =   False
+      Value           =   4
+      Visible         =   True
+      Width           =   100
+   End
+   Begin Label XComponentsLabel
       AllowAutoDeactivate=   True
       Bold            =   False
       DataField       =   ""
@@ -67,110 +89,58 @@ Begin Window ExampleWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   20
+      Left            =   275
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
-      Scope           =   2
+      Scope           =   0
       Selectable      =   False
-      TabIndex        =   1
+      TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "Examples"
+      Text            =   "X Components"
       TextAlignment   =   0
       TextColor       =   &c00000000
       Tooltip         =   ""
-      Top             =   20
+      Top             =   97
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   119
+      Width           =   100
    End
-   Begin Listbox BlurHashListbox
+   Begin Slider YComponentsSlider
       AllowAutoDeactivate=   True
-      AllowAutoHideScrollbars=   True
-      AllowExpandableRows=   False
-      AllowFocusRing  =   True
-      AllowResizableColumns=   False
-      AllowRowDragging=   False
-      AllowRowReordering=   False
-      Bold            =   False
-      ColumnCount     =   1
-      ColumnWidths    =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      DefaultRowHeight=   -1
-      DropIndicatorVisible=   False
-      Enabled         =   True
-      FontName        =   "System"
-      FontSize        =   0.0
-      FontUnit        =   0
-      GridLinesHorizontalStyle=   0
-      GridLinesVerticalStyle=   0
-      HasBorder       =   True
-      HasHeader       =   False
-      HasHorizontalScrollbar=   False
-      HasVerticalScrollbar=   True
-      HeadingIndex    =   -1
-      Height          =   390
+      AllowLiveScrolling=   False
+      Enabled         =   False
+      Height          =   23
       Index           =   -2147483648
       InitialParent   =   ""
-      InitialValue    =   ""
-      Italic          =   False
-      Left            =   20
-      LockBottom      =   True
+      Left            =   387
+      LineStep        =   1
+      LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
-      RequiresSelection=   False
-      RowSelectionType=   0
-      Scope           =   2
-      TabIndex        =   2
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Tooltip         =   ""
-      Top             =   44
-      Transparent     =   False
-      Underline       =   False
-      Visible         =   True
-      Width           =   119
-      _ScrollOffset   =   0
-      _ScrollWidth    =   -1
-   End
-   Begin Slider PunchSlider
-      AllowAutoDeactivate=   True
-      AllowLiveScrolling=   True
-      Enabled         =   True
-      Height          =   23
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Left            =   542
-      LineStep        =   1
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
-      LockTop         =   False
-      MaximumValue    =   300
-      MinimumValue    =   0
+      MaximumValue    =   9
+      MinimumValue    =   1
       PageStep        =   20
       Scope           =   0
-      TabIndex        =   6
+      TabIndex        =   3
       TabPanelIndex   =   0
       TabStop         =   True
       TickMarkStyle   =   0
       Tooltip         =   ""
-      Top             =   564
+      Top             =   133
       Transparent     =   False
-      Value           =   100
+      Value           =   3
       Visible         =   True
-      Width           =   92
+      Width           =   100
    End
-   Begin Label PunchLabel
+   Begin Label YComponentsLabel
       AllowAutoDeactivate=   True
       Bold            =   False
       DataField       =   ""
@@ -183,60 +153,27 @@ Begin Window ExampleWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   468
-      LockBottom      =   True
+      Left            =   275
+      LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
-      LockTop         =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
       Multiline       =   False
       Scope           =   0
       Selectable      =   False
-      TabIndex        =   7
+      TabIndex        =   4
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "Punch:"
-      TextAlignment   =   3
+      Text            =   "Y Components"
+      TextAlignment   =   0
       TextColor       =   &c00000000
       Tooltip         =   ""
-      Top             =   560
+      Top             =   129
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   62
-   End
-   Begin CheckBox LowQualityPreviewCheckBox
-      AllowAutoDeactivate=   True
-      Bold            =   False
-      Caption         =   "Low Quality Preview"
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      FontName        =   "System"
-      FontSize        =   0.0
-      FontUnit        =   0
-      Height          =   20
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   663
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
-      LockTop         =   False
-      Scope           =   0
-      State           =   1
-      TabIndex        =   8
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Tooltip         =   ""
-      Top             =   560
-      Transparent     =   False
-      Underline       =   False
-      Value           =   True
-      Visible         =   True
-      Width           =   149
+      Width           =   100
    End
    Begin TextArea BlurHashTextArea
       AllowAutoDeactivate=   True
@@ -256,42 +193,101 @@ Begin Window ExampleWindow
       HasBorder       =   True
       HasHorizontalScrollbar=   False
       HasVerticalScrollbar=   True
-      Height          =   100
+      Height          =   169
       HideSelection   =   True
       Index           =   -2147483648
       Italic          =   False
-      Left            =   20
+      Left            =   45
       LineHeight      =   0.0
       LineSpacing     =   1.0
-      LockBottom      =   True
+      LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       MaximumCharactersAllowed=   0
       Multiline       =   True
-      ReadOnly        =   False
+      ReadOnly        =   True
       Scope           =   0
-      TabIndex        =   9
+      TabIndex        =   5
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   ""
       TextAlignment   =   0
       TextColor       =   &c00000000
       Tooltip         =   ""
-      Top             =   446
+      Top             =   226
       Transparent     =   False
       Underline       =   False
       UnicodeMode     =   1
       ValidationMask  =   ""
       Visible         =   True
-      Width           =   119
+      Width           =   218
    End
-   Begin PushButton RandomizePushButton
+   Begin BlurHash.BlurHashCanvas BlurHashPreviewCanvas
+      AllowAutoDeactivate=   True
+      AllowFocus      =   False
+      AllowFocusRing  =   True
+      AllowTabs       =   False
+      Backdrop        =   0
+      Enabled         =   True
+      Hash            =   ""
+      Height          =   169
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   275
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Punch           =   1.0
+      Scope           =   1
+      ShowLowQualityPreview=   True
+      TabIndex        =   6
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   226
+      Transparent     =   True
+      Visible         =   True
+      Width           =   280
+   End
+   Begin Thread EncoderThread
+      Index           =   -2147483648
+      LockedInPosition=   False
+      Priority        =   5
+      Scope           =   2
+      StackSize       =   0
+      TabPanelIndex   =   0
+   End
+   Begin ProgressWheel EncoderProgressWheel
+      AllowAutoDeactivate=   True
+      Enabled         =   True
+      Height          =   16
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   275
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   7
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   164
+      Transparent     =   False
+      Visible         =   False
+      Width           =   16
+   End
+   Begin PushButton ClosePushButton
       AllowAutoDeactivate=   True
       Bold            =   False
       Cancel          =   False
-      Caption         =   "Randomize"
+      Caption         =   "Close"
       Default         =   False
       Enabled         =   True
       FontName        =   "System"
@@ -301,96 +297,125 @@ Begin Window ExampleWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   20
-      LockBottom      =   True
+      Left            =   260
+      LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       MacButtonStyle  =   0
       Scope           =   0
-      TabIndex        =   10
+      TabIndex        =   8
       TabPanelIndex   =   0
       TabStop         =   True
       Tooltip         =   ""
-      Top             =   560
+      Top             =   436
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   119
+      Width           =   80
    End
 End
 #tag EndWindow
 
 #tag WindowCode
-	#tag MenuHandler
-		Function FileEncodeImage() As Boolean Handles FileEncodeImage.Action
-			Var d As New EncoderWindow
-			d.ShowModalWithin(Self)
-			Return True
-			
-		End Function
-	#tag EndMenuHandler
+	#tag Method, Flags = &h21
+		Private Sub EncodeImage()
+		  EncoderThread.Stop
+		  ImageToEncode = InputImageWell.Image
+		  ComponentsX = XComponentsSlider.Value
+		  ComponentsY = YComponentsSlider.Value
+		  
+		  EncoderProgressWheel.Visible = True
+		  EncoderThread.Start
+		End Sub
+	#tag EndMethod
+
+
+	#tag Property, Flags = &h0
+		ComponentsX As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		ComponentsY As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		ImageToEncode As Picture
+	#tag EndProperty
 
 
 #tag EndWindowCode
 
-#tag Events BlurHashListbox
-	#tag Event
-		Sub Change()
-		  BlurHashTextArea.Text = If(Me.SelectedRowIndex = -1, "", Me.RowTagAt(Me.SelectedRowIndex))
-		End Sub
-	#tag EndEvent
+#tag Events InputImageWell
 	#tag Event
 		Sub Open()
-		  Var examples() As String = Array( _
-		  "KEHV6nWB2ypyo0ad.7kCMd", _
-		  "KGFFaXYk^6@-5c,1@[or[Q", _
-		  "K6Pj42jE.A_3t7t7*0o#Dg", _
-		  "KKO2?V%2Tw]~RBVZ};RPxu")
+		  Me.AcceptPictureDrop
+		  Me.AcceptFileDrop("image/jpeg")
+		  Me.AcceptFileDrop("image/png")
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub DropObject(obj As DragItem, action As Integer)
+		  If Not obj.PictureAvailable And Not obj.FolderItemAvailable Then Return
 		  
-		  For i As Integer = 0 To examples.LastRowIndex
-		    Var index As Integer = i + 1
-		    Me.AddRow("Example #" + index.ToString)
-		    Me.RowTagAt(i) = examples(i)
-		  Next
+		  If obj.PictureAvailable Then
+		    Me.Image = obj.Picture
+		  Elseif obj.FolderItemAvailable Then
+		    Me.Image = Picture.Open(obj.FolderItem)
+		  End If
 		  
-		  Me.SelectedRowIndex = 0
+		  XComponentsSlider.Enabled = True
+		  YComponentsSlider.Enabled = True
+		  EncodeImage
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events PunchSlider
+#tag Events XComponentsSlider
 	#tag Event
 		Sub ValueChanged()
-		  ResultCanvas.Punch = Me.Value / 100
+		  EncodeImage
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events LowQualityPreviewCheckBox
+#tag Events YComponentsSlider
 	#tag Event
-		Sub Action()
-		  ResultCanvas.ShowLowQualityPreview = Me.Value
+		Sub ValueChanged()
+		  EncodeImage
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events BlurHashTextArea
 	#tag Event
 		Sub TextChange()
-		  ResultCanvas.Hash = Me.Text
+		  BlurHashPreviewCanvas.Hash = Me.Text
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events RandomizePushButton
+#tag Events EncoderThread
+	#tag Event
+		Sub Run()
+		  Var encoder As New BlurHash.Encoder
+		  Var hash As String = encoder.Encode(ImageToEncode, ComponentsX, ComponentsY)
+		  
+		  Var update As New Dictionary
+		  update.Value("blurhash") = hash
+		  
+		  Me.AddUserInterfaceUpdate(update)
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub UserInterfaceUpdate(data() as Dictionary)
+		  EncoderProgressWheel.Visible = False
+		  Var update As Dictionary = data(data.LastIndex)
+		  BlurHashTextArea.Text = update.Value("blurhash")
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events ClosePushButton
 	#tag Event
 		Sub Action()
-		  Var alphabet() As String = BlurHash.Base83.kAlphabet.Split("")
-		  Var charAmount As Integer = System.Random.InRange(20, 30)
-		  Var hash As String = alphabet(System.Random.InRange(0, alphabet.IndexOf("S")))
-		  For i As Integer = 0 To charAmount
-		    hash = hash + alphabet(System.Random.InRange(0, alphabet.LastIndex))
-		  Next
-		  
-		  BlurHashTextArea.Text = hash
+		  Self.Close
 		End Sub
 	#tag EndEvent
 #tag EndEvents

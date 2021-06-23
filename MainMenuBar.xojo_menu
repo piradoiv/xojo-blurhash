@@ -7,6 +7,17 @@ Begin Menu MainMenuBar
       AutoEnabled = True
       AutoEnable = True
       Visible = True
+      Begin MenuItem FileEncodeImage
+         SpecialMenu = 0
+         Index = -2147483648
+         Text = "Encode Image..."
+         ShortcutKey = "O"
+         Shortcut = "Cmd+O"
+         MenuModifier = True
+         AutoEnabled = True
+         AutoEnable = True
+         Visible = True
+      End
       Begin QuitMenuItem FileQuit
          SpecialMenu = 0
          Index = -2147483648

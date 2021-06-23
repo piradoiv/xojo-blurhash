@@ -226,6 +226,7 @@ Begin Window ExampleWindow
       LockRight       =   True
       LockTop         =   False
       Scope           =   0
+      State           =   1
       TabIndex        =   8
       TabPanelIndex   =   0
       TabStop         =   True
@@ -235,7 +236,6 @@ Begin Window ExampleWindow
       Underline       =   False
       Value           =   True
       Visible         =   True
-      VisualState     =   1
       Width           =   149
    End
    Begin TextArea BlurHashTextArea
@@ -319,10 +319,51 @@ Begin Window ExampleWindow
       Visible         =   True
       Width           =   119
    End
+   Begin PushButton PushButton1
+      AllowAutoDeactivate=   True
+      Bold            =   False
+      Cancel          =   False
+      Caption         =   "Button"
+      Default         =   False
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Height          =   20
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   151
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      MacButtonStyle  =   0
+      Scope           =   0
+      TabIndex        =   11
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   560
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   80
+   End
 End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Method, Flags = &h0
+		Sub TestEncoder()
+		  Var b83 As New BlurHash.Base83
+		  Var value As String = b83.Encode(30, 1)
+		  MessageBox(value)
+		End Sub
+	#tag EndMethod
+
+
 #tag EndWindowCode
 
 #tag Events BlurHashListbox
@@ -373,7 +414,7 @@ End
 #tag Events RandomizePushButton
 	#tag Event
 		Sub Action()
-		  Var alphabet() As String = BlurHash.Decoder.kAlphabet.Split("")
+		  Var alphabet() As String = BlurHash.Base83.kAlphabet.Split("")
 		  Var charAmount As Integer = System.Random.InRange(20, 30)
 		  Var hash As String = alphabet(System.Random.InRange(0, alphabet.IndexOf("S")))
 		  For i As Integer = 0 To charAmount
@@ -381,6 +422,13 @@ End
 		  Next
 		  
 		  BlurHashTextArea.Text = hash
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events PushButton1
+	#tag Event
+		Sub Action()
+		  TestEncoder
 		End Sub
 	#tag EndEvent
 #tag EndEvents

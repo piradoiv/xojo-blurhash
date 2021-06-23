@@ -4,12 +4,13 @@ Protected Class Decoder
 		Function Decode(hash As String, width As Integer, height As Integer, punch As Double = 1.0) As Picture
 		  Var result As New Picture(width, height)
 		  Var chars() As String = hash.Split("")
+		  Var b83 As New BlurHash.Base83
 		  
-		  Var sizeFlag As Integer = DecodeBase83(chars(0))
+		  Var sizeFlag As Integer = b83.Decode(chars(0))
 		  Var sizeX As Integer = (sizeFlag Mod 9) + 1
 		  Var sizeY As Integer = Round(sizeFlag / 9) + 1
 		  
-		  Var quantisedMaximumValue As Integer = DecodeBase83(chars(1))
+		  Var quantisedMaximumValue As Integer = b83.Decode(chars(1))
 		  Var maximumValue As Double = (quantisedMaximumValue + 1) / 166 * punch
 		  Var colors(-1,-1) As Double = PrepareColors(sizeX, sizeY, maximumValue, hash)
 		  
@@ -58,17 +59,6 @@ Protected Class Decoder
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function DecodeBase83(input As String) As Integer
-		  Var value As Integer = 0
-		  For Each c As String In Input.Characters
-		    value = value * 83 + kAlphabet.indexOf(c, ComparisonOptions.CaseSensitive)
-		  Next
-		  
-		  Return value
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
 		Private Function DecodeDC(value As Double) As Double()
 		  Var r As Integer = ShiftRight(value, 16)
 		  Var g As Integer = BitAnd(ShiftRight(value, 8), 255)
@@ -94,10 +84,11 @@ Protected Class Decoder
 		  Var value As Integer
 		  Var decoded() As Double
 		  Var portion As String
+		  Var b83 As New Base83
 		  
 		  ' DC component
 		  portion = hash.JSLikeSubstring(2, 6)
-		  value = DecodeBase83(portion)
+		  value = b83.Decode(portion)
 		  decoded = DecodeDC(value)
 		  colors(0, 0) = decoded(0)
 		  colors(0, 1) = decoded(1)
@@ -106,7 +97,7 @@ Protected Class Decoder
 		  ' AC Components
 		  For component As Integer = 1 To colors.LastIndex
 		    portion = hash.JSLikeSubstring(4 + component * 2, 6 + component * 2)
-		    value = DecodeBase83(portion)
+		    value = b83.Decode(portion)
 		    decoded = DecodeAC(value, maximumValue)
 		    colors(component, 0) = decoded(0)
 		    colors(component, 1) = decoded(1)
@@ -134,9 +125,6 @@ Protected Class Decoder
 		End Function
 	#tag EndMethod
 
-
-	#tag Constant, Name = kAlphabet, Type = String, Dynamic = False, Default = \"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+\x2C-.:;\x3D\?@[]^_{|}~", Scope = Public
-	#tag EndConstant
 
 	#tag Constant, Name = PI, Type = Double, Dynamic = False, Default = \"3.14159265358979323846", Scope = Private
 	#tag EndConstant

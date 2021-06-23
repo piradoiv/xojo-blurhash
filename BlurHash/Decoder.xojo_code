@@ -5,11 +5,11 @@ Protected Class Decoder
 		  Var result As New Picture(width, height)
 		  Var chars() As String = hash.Split("")
 		  
-		  Var sizeFlag As Integer = DecodeBase83(chars(0))
+		  Var sizeFlag As Integer = BlurHash.Base83.Decode(chars(0))
 		  Var sizeX As Integer = (sizeFlag Mod 9) + 1
 		  Var sizeY As Integer = Round(sizeFlag / 9) + 1
 		  
-		  Var quantisedMaximumValue As Integer = DecodeBase83(chars(1))
+		  Var quantisedMaximumValue As Integer = BlurHash.Base83.Decode(chars(1))
 		  Var maximumValue As Double = (quantisedMaximumValue + 1) / 166 * punch
 		  Var colors(-1,-1) As Double = PrepareColors(sizeX, sizeY, maximumValue, hash)
 		  
@@ -35,7 +35,7 @@ Protected Class Decoder
 		        Next
 		      Next
 		      
-		      pixels.Pixel(x, y) = Color.RGB(LinearTosRGB(r), LinearTosRGB(g), LinearTosRGB(b))
+		      pixels.Pixel(x, y) = Color.RGB(ColorUtils.LinearTosRGB(r), ColorUtils.LinearTosRGB(g), ColorUtils.LinearTosRGB(b))
 		    Next
 		  Next
 		  
@@ -49,22 +49,11 @@ Protected Class Decoder
 		  Var quantG As Integer = Round(value / 19) Mod 19
 		  Var quantB As Integer = value Mod 19
 		  
-		  Var r As Double = SignPow((quantR - 9) / 9, 2.0) * maximumValue
-		  Var g As Double = SignPow((quantG - 9) / 9, 2.0) * maximumValue
-		  Var b As Double = SignPow((quantB - 9) / 9, 2.0) * maximumValue
+		  Var r As Double = BlurHash.Math.SignPow((quantR - 9) / 9, 2.0) * maximumValue
+		  Var g As Double = BlurHash.Math.SignPow((quantG - 9) / 9, 2.0) * maximumValue
+		  Var b As Double = BlurHash.Math.SignPow((quantB - 9) / 9, 2.0) * maximumValue
 		  
 		  Return Array(r, g, b)
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Function DecodeBase83(input As String) As Integer
-		  Var value As Integer = 0
-		  For Each c As String In Input.Characters
-		    value = value * 83 + kAlphabet.indexOf(c, ComparisonOptions.CaseSensitive)
-		  Next
-		  
-		  Return value
 		End Function
 	#tag EndMethod
 
@@ -74,16 +63,7 @@ Protected Class Decoder
 		  Var g As Integer = BitAnd(ShiftRight(value, 8), 255)
 		  Var b As Integer = BitAnd(value, 255)
 		  
-		  Return Array(sRGBToLinear(r), sRGBToLinear(g), sRGBToLinear(b))
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Function LinearTosRGB(value As Double) As Integer
-		  Var v As Double = Max(0, Min(1, value))
-		  Return If(v <= 0.0031308, _
-		  v * 12.92 * 255 + 0.5, _
-		  (1.055 * Pow(v, 1 / 2.4) - 0.055) * 255 + 0.5)
+		  Return Array(ColorUtils.sRGBToLinear(r), ColorUtils.sRGBToLinear(g), ColorUtils.sRGBToLinear(b))
 		End Function
 	#tag EndMethod
 
@@ -97,7 +77,7 @@ Protected Class Decoder
 		  
 		  ' DC component
 		  portion = hash.JSLikeSubstring(2, 6)
-		  value = DecodeBase83(portion)
+		  value = BlurHash.Base83.Decode(portion)
 		  decoded = DecodeDC(value)
 		  colors(0, 0) = decoded(0)
 		  colors(0, 1) = decoded(1)
@@ -106,7 +86,7 @@ Protected Class Decoder
 		  ' AC Components
 		  For component As Integer = 1 To colors.LastIndex
 		    portion = hash.JSLikeSubstring(4 + component * 2, 6 + component * 2)
-		    value = DecodeBase83(portion)
+		    value = BlurHash.Base83.Decode(portion)
 		    decoded = DecodeAC(value, maximumValue)
 		    colors(component, 0) = decoded(0)
 		    colors(component, 1) = decoded(1)
@@ -117,26 +97,6 @@ Protected Class Decoder
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h21
-		Private Function SignPow(base As Double, exp As Double) As Double
-		  Return Sign(base) * Pow(Abs(base), exp)
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Function sRGBToLinear(value As Double) As Double
-		  Var v As Double = value / 255
-		  If v <= 0.04045 Then
-		    Return v / 12.92
-		  Else
-		    Return Pow((v + 0.055) / 1.055, 2.4)
-		  End If
-		End Function
-	#tag EndMethod
-
-
-	#tag Constant, Name = kAlphabet, Type = String, Dynamic = False, Default = \"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+\x2C-.:;\x3D\?@[]^_{|}~", Scope = Public
-	#tag EndConstant
 
 	#tag Constant, Name = PI, Type = Double, Dynamic = False, Default = \"3.14159265358979323846", Scope = Private
 	#tag EndConstant

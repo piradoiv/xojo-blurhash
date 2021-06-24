@@ -3,7 +3,7 @@ Protected Class Encoder
 	#tag Method, Flags = &h0
 		Function Encode(imageToEncode As Picture, componentsX As Integer = 4, componentsY As Integer = 4, linear As Boolean = False) As String
 		  Var hash As String
-		  Var image As New Picture(Min(imageToEncode.Width, 200), Min(imageToEncode.Height, 200))
+		  Var image As New Picture(Min(imageToEncode.Width, 20), Min(imageToEncode.Height, 20))
 		  image.Graphics.DrawPicture(imageToEncode, 0, 0, image.Width, image.Height, 0, 0, imageToEncode.Width, imageToEncode.Height)
 		  
 		  Var width As Integer = image.Width

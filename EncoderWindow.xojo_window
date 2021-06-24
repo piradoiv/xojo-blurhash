@@ -230,6 +230,7 @@ Begin Window EncoderWindow
       AllowFocusRing  =   True
       AllowTabs       =   False
       Backdrop        =   0
+      DoubleBuffer    =   False
       Enabled         =   True
       Hash            =   ""
       Height          =   169
@@ -254,12 +255,15 @@ Begin Window EncoderWindow
       Width           =   280
    End
    Begin Thread EncoderThread
+      DebugIdentifier =   ""
       Index           =   -2147483648
       LockedInPosition=   False
       Priority        =   5
       Scope           =   2
       StackSize       =   0
       TabPanelIndex   =   0
+      ThreadID        =   0
+      ThreadState     =   0
    End
    Begin ProgressWheel EncoderProgressWheel
       AllowAutoDeactivate=   True
@@ -654,6 +658,30 @@ End
 		Group="Deprecated"
 		InitialValue="True"
 		Type="Boolean"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ComponentsX"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ComponentsY"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ImageToEncode"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Picture"
 		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior

@@ -256,6 +256,7 @@ Begin Window EncoderWindow
    End
    Begin Thread EncoderThread
       DebugIdentifier =   ""
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Priority        =   5

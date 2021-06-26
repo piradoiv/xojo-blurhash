@@ -14,7 +14,7 @@ Protected Class Encoder
 		  
 		  ' Convert to Linear
 		  Var imageLinear(-1, -1, -1) As Double
-		  imageLinear.ResizeTo(width, height, 2)
+		  imageLinear.ResizeTo(height, width, 2)
 		  For y As Integer = 0 To height - 1
 		    For x As Integer = 0 To width - 1
 		      Var pixel As Color = pixels.Pixel(x, y)

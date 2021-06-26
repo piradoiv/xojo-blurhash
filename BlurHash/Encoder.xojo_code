@@ -75,7 +75,7 @@ Protected Class Encoder
 		  
 		  Var acValues() As Integer
 		  Var r, g, b As Double
-		  For i As Integer = 1 To componentsX * componentsY
+		  For i As Integer = 1 To (componentsX * componentsY) - 1
 		    r = components(i, 0)
 		    g = components(i, 1)
 		    b = components(i, 2)

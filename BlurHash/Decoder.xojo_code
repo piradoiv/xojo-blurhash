@@ -45,8 +45,8 @@ Protected Class Decoder
 
 	#tag Method, Flags = &h21
 		Private Function DecodeAC(value As Double, maximumValue As Double) As Double()
-		  Var quantR As Integer = Round(value / (19 * 19))
-		  Var quantG As Integer = Round(value / 19) Mod 19
+		  Var quantR As Integer = Floor(value / (19 * 19))
+		  Var quantG As Integer = Floor(value / 19) Mod 19
 		  Var quantB As Integer = value Mod 19
 		  
 		  Var r As Double = BlurHash.Math.SignPow((quantR - 9) / 9, 2.0) * maximumValue
